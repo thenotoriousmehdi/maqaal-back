@@ -1,4 +1,4 @@
-from fastapi import  FastAPI, status,Depends
+from fastapi import  FastAPI, status,Depends,UploadFile,File
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_jwt_auth import AuthJWT
@@ -13,6 +13,10 @@ from fastapi.encoders import jsonable_encoder
 
 from esSearch import perform_search
 from elasticSearchLogic import ElasticSearch_indexation
+
+import os
+import secrets
+import subprocess
 
 app = FastAPI()
 
@@ -33,10 +37,73 @@ app.add_middleware(
 
 @app.get('/')
 async def hello():
+   
+    data={"message":"hello from backend"}
+    return JSONResponse(content=data)
+
+
+@app.post('/upload')
+async def upload(file:UploadFile=File(...)):  #create File instance 
+
+    file_ext=file.filename.split(".").pop()    
+    file_name=secrets.token_hex(10)   #gives it unique name 
+    file_path=f"{file_name}.{file_ext}"
+    with open(file_path,"wb") as f:
+        content = await file.read()
+        f.write(content)
+
+   
+    
+    return {"success":True, "file_path":file_path}
+
+async def run_cermine_extraction():
+    command = [
+        'java',
+        '-cp', './cermine-impl-1.13-jar-with-dependencies.jar',
+        'pl.edu.icm.cermine.ContentExtractor',
+        '-path', 'pdfFiles'
+    ]
+
+    result = subprocess.run(command, capture_output=True, text=True, check=True)
+    print(result.stdout) 
+     
+
+
+@app.get('/extract/{fileName}')
+async def extract(fileName:str):  
+
+    print(fileName)
+
+    try:
+       await run_cermine_extraction()
+    except subprocess.CalledProcessError as e:
+        print(f"Error: {e}")
+        print(f"Output: {e.output}")
+
+    #time to send response 
+    
+
+    with open(f"./pdfFiles/{fileName}.cermxml", 'r', encoding='utf-8') as file:
+        xml_content = file.read()
+
+    #detetion of extra files
+        
+    file_path1 = "fileName.cermxml"
+    file_path2 = "fileName.images"
+     
+    return({"data":xml_content})
+
+
+
+    
+@app.get('/Perform_search')
+async def hello():
     serach_result=perform_search()
     print(serach_result)
     data={"message":"hello from backend"}
     return JSONResponse(content=data)
+
+
 
 @app.get('/index')
 async def EsIndexing():

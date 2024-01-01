@@ -1,0 +1,522 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.0 20120330//EN" "JATS-archivearticle1.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Cours d'Analyse Num´erique (</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>CSC)-</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>. Hamid HADDADOU</string-name>
+        </contrib>
+      </contrib-group>
+      <pub-date>
+        <year>2018</year>
+      </pub-date>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+    </sec>
+    <sec id="sec-2">
+      <title>1 Introduction</title>
+      <sec id="sec-2-1">
+        <title>Exemples motivants</title>
+      </sec>
+      <sec id="sec-2-2">
+        <title>Utilit´es des valeurs et vecteurs propres</title>
+      </sec>
+    </sec>
+    <sec id="sec-3">
+      <title>2 Notion et localisation des valeurs propres</title>
+      <sec id="sec-3-1">
+        <title>D´efinition</title>
+      </sec>
+      <sec id="sec-3-2">
+        <title>Localisation des valeurs propres</title>
+      </sec>
+    </sec>
+    <sec id="sec-4">
+      <title>3 M´ethodes directes de calcul des valeurs propres</title>
+      <sec id="sec-4-1">
+        <title>Limites des m´ethodes directes</title>
+      </sec>
+    </sec>
+    <sec id="sec-5">
+      <title>4 M´ethodes it´eratives de calcul des valeurs propres</title>
+    </sec>
+    <sec id="sec-6">
+      <title>5 M´ethodes partielles</title>
+      <sec id="sec-6-1">
+        <title>La m´ethode de la puissance (it´er´ee)</title>
+      </sec>
+      <sec id="sec-6-2">
+        <title>La m´ethode de la puissance inverse</title>
+      </sec>
+    </sec>
+    <sec id="sec-7">
+      <title>6 M´ethodes it´eratives globales</title>
+      <sec id="sec-7-1">
+        <title>La m´ethode de Jacobi</title>
+      </sec>
+      <sec id="sec-7-2">
+        <title>La m´ethode LR de Rutishauser</title>
+      </sec>
+      <sec id="sec-7-3">
+        <title>La m´ethode QR de Francis</title>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <sec id="sec-7-3-1">
+          <title>Exemple motivant 1</title>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-8">
+      <title>Exemple (L’image dans une glace)</title>
+      <p>• L’image dans une glace de tout vecteur coll´e `a celle-ci est lui mˆeme.
+• L’image dans une glace de tout vecteur perpendiculaire `a celle-ci est le
+vecteur oppos´e (de mˆeme longueur mais de sens oppos´e).</p>
+      <p>Sachant que l’image dans une glace est une application lin´eaire, ceci peut se
+traduire comme suit :
+• 1 est une v.p. de cette application et tout vecteur coll´e `a la glace en ait un
+vecteur propre associ´e.
+• -1 est une v.p. de cette application et tout vecteur perpendiculaire `a la glace
+en ait un vecteur propre associ´e.</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      <sec id="sec-8-1">
+        <title>Exemple motivant 2</title>
+      </sec>
+    </sec>
+    <sec id="sec-9">
+      <title>Exemple (Classement des pages web)</title>
+      <p>On consid`ere un r´eseau (graphe) de quatre pages web A, B, C et D avec
+B
+%. A</p>
+      <p>&amp;&amp; C %</p>
+      <p>D
+n
+L’importance d’une page web P est d´efinie par μP = jP=1 N1Pj μpj , ou` les Pj ,
+1 ≤ j ≤ n sont les pages qui ont un lien qui pointe vers P et NPj est le nombre
+de liens qui sont ´emis par la page Pj . Le syst`eme lin´eaire Mμ = μ li´e au cas
+ci-dessus est
+ 01 031 00 121   μA   μA 
+ 0221 3131 10 002   μμμDCB  =  μμμDCB  .</p>
+      <p>Ainsi, μ repr´esente un vecteur propre de la matrice du syst`eme associ´e `a la
+valeur propre 1. Ce probl`eme admet une solution (car 1 est r´eellement une v.p.
+de la matrice ci-dessus ! ! ! ! !).</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      <sec id="sec-9-1">
+        <title>Utilit´es des valeurs et vecteur propres</title>
+        <p>Les valeurs et vecteurs propres jouent un rˆole tr`es important dans beaucoup de
+domaines. Pour les domaines appliqu´es voir les exemples motivants ci-dessus.</p>
+        <sec id="sec-9-1-1">
+          <title>Par ailleurs, en math´ematiques par exemple,</title>
+          <p>les valeurs et vecteurs propres interviennent dans la r´esolution des
+syst`emes lin´eaires (chapitres 1-2),
+les valeurs et vecteurs propres interviennent en analyse des donn´ees,
+les valeurs et vecteurs propres peuvent intervenir dans la r´esolution des
+syst`emes d’´equations diff´erentielles.</p>
+          <p>Pour calculer les valeurs propres il y’a deux types de m´ethodes, `a savoir, les
+m´ethodes directes et les m´ethodes it´eratives.
+• Les m´ethodes directes permettent d’obtenir les valeurs propres en
+exploitant que le polynˆome caract´eristique de la matrice.
+• Les m´ethodes it´eratives permettent d’obtenir les valeurs propres en
+exploitant la matrice elle mˆeme.</p>
+          <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres
+Notion et localisation des valeurs propres</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-10">
+      <title>D´efinition</title>
+    </sec>
+    <sec id="sec-11">
+      <title>Remarque</title>
+      <p>Soit A ∈ Mn(R). Alors, on dit qu’un complexe λ est valeurs propre (V.P.) de A
+si ∃X ∈ Cn \ {0} tel que AX = λX , X est appell´e vecteur propre de A associ´e
+`a λ</p>
+      <p>Les valeurs propres d’une matrice A ∈ Mn(R) sym´etrique sont toutes
+r´eelles.</p>
+      <p>Deux matrices semblables ont les mˆemes valeurs propres.</p>
+      <p>t
+•• t ((1−11)1e)setsutnunvevcetcetueruprrporporperededAe Aasasosscoi´eci´`ea `alalavavleauleruprrporporpere3.−1,</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      <sec id="sec-11-1">
+        <title>On a le r´esultat suivant :</title>
+      </sec>
+    </sec>
+    <sec id="sec-12">
+      <title>Th´eor`eme (Gershgorin-Hadamard)</title>
+      <p>n
+Soit Di = {z ∈ C tq |z − aii | ≤ P |aij |}. Alors, on a
+j=1,j6=i</p>
+      <p>n
+Sp(A) ⊂ i∪=1Di ,</p>
+    </sec>
+    <sec id="sec-13">
+      <title>Remarque</title>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      <p>M´ethodes directes de calcul des valeurs propres Limites des m´ethodes directes
+Calcul des valeurs propres via le polynˆome caract´eristique</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      <p>M´ethodes directes de calcul des valeurs propres Limites des m´ethodes directes</p>
+      <sec id="sec-13-1">
+        <title>Illustration de la m´ethode de Krylov</title>
+        <sec id="sec-13-1-1">
+          <title>Consid´erons la matrice</title>
+          <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-14">
+      <title>A ne pas faire !</title>
+      <p>Si la taille de la matrice est grande ou si les coefficients ne sont pas entiers il
+est vivement d´econseill´e de calculer les valeurs propres `a l’aide du polynˆome
+caract´eristique (en le calculant par le determinant ou autre technique) car ¸ca
+donne lieu `a un algorithme instable (tr`es sensible aux erreurs d’arrondi).
+Dans le cas des m´ethodes qui exploitent que le polynˆomes caract´eristiues, deux
+difficult´es surgissent, la premi`ere est que le polynoˆme caract´eristique d’une
+matrice A est donn´e par det(A − XI ) et la seconde est la d´etermination des
+racines. Pour calculer les coefficients du polynoˆme caract´eristique sans passer
+par le d´eterminant , on peut citer les m´ethodes de Krylov, de Leverrier et de
+Souriau-Faddeev. En revanche pour la determination des racines (si n n’est pas
+tr`es grand) on peut utiliser les m´ethodes de r´esolution des ´equations non
+lin´eaires qui vont ˆetre pr´esent´ees dans le chapitre 4. Mais, pour n &gt; 10 cette
+fac¸on de faire donne lieu `a des algorithmes instables (`a cause du calcul en
+virgule flottante) d’ou` sa limite d’utilisation en pratique.</p>
+      <p>En effet, consid´erons l’exemple (propos´e par J. H. Wilkinson dans les ann´ees
+60), le probl`eme du calcul des valeurs propres de la matrice diagonale
+A = diag (1, ..., n), dont le polynˆome caract´eristique est</p>
+      <p>PA(λ) = (1 − λ)...(n − λ), = (−1)nλn + an−1λn−1 + ... + a1λ + a0.</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres
+M´ethodes directes de calcul des valeurs propres</p>
+      <sec id="sec-14-1">
+        <title>Limites des m´ethodes directes (suite)</title>
+        <p>Supposons que les coefficients calcul´es sont entach´es d’erreurs . Nous calculons
+alors les racines du polynˆome</p>
+        <p>PA(λ) = (−1)nλn + agn−1λn−1 + ... + ae1λ + ae0.</p>
+        <p>La perturbation des coefficients provoque une erreur dans le calcul des racines
+du polynoˆme. On fait remarquer qu’en r´ealit´e, pour n grand, le calcul
+num´erique des valeurs propres ne se ram`ene pas au calcul num´erique des
+racines d’un polynˆome, mais c’est l’inverse qui est vrai. Plus pr´ecisement,
+chaque ´equation plynˆomiale peut ˆetre associ´ee `a un polynoˆme de la forme
+P(X ) = a0 + a1X + a2X 2 + . . . + an−1X n−1 + X n, et ¸ca correspond
+exactement au (−1)n PA(X ) ou` A est la matrice suivante (appel´ee matrice de
+Frobenius ou compagnon de P)
+ 0 0
+ 1 0
+
+ 0 1
+ ... . . .</p>
+        <p>0 · · ·</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <sec id="sec-14-1-1">
+          <title>Les m´ethodes partielles visent le calcul</title>
+          <p>• de la plus grande valeur propre en module λ1 (si elle est unique) !,
+• la plus petite valeur propre en module λn (si elle est unique) !,
+• ou encore la valeur propre la plus proche d’une valeur donn´ee.</p>
+        </sec>
+        <sec id="sec-14-1-2">
+          <title>Ces m´ethodes permettent de trouver le vecteur propre correspondant.</title>
+        </sec>
+        <sec id="sec-14-1-3">
+          <title>Les m´ethodes globales s’int´eressent `a trouver le spectre tout entier</title>
+          <p>c’est `a dire λ1, . . . , λn.</p>
+        </sec>
+        <sec id="sec-14-1-4">
+          <title>Ces m´ethodes pr´esentent l’inconv´enient de ne pas donner en g´en´eral directement les vecteurs propres.</title>
+          <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        </sec>
+        <sec id="sec-14-1-5">
+          <title>Les m´ethodes partielles visent le calcul</title>
+          <p>• de la plus grande valeur propre en module λ1 (si elle est unique) !,
+• la plus petite valeur propre en module λn (si elle est unique) !,
+• ou encore la valeur propre la plus proche d’une valeur donn´ee.</p>
+        </sec>
+        <sec id="sec-14-1-6">
+          <title>Ces m´ethodes permettent de trouver le vecteur propre correspondant.</title>
+        </sec>
+        <sec id="sec-14-1-7">
+          <title>Les m´ethodes globales s’int´eressent `a trouver le spectre tout entier</title>
+          <p>c’est `a dire λ1, . . . , λn.</p>
+        </sec>
+        <sec id="sec-14-1-8">
+          <title>Ces m´ethodes pr´esentent l’inconv´enient de ne pas donner en g´en´eral directement les vecteurs propres.</title>
+          <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        </sec>
+        <sec id="sec-14-1-9">
+          <title>Les m´ethodes partielles visent le calcul</title>
+          <p>• de la plus grande valeur propre en module λ1 (si elle est unique) !,
+• la plus petite valeur propre en module λn (si elle est unique) !,
+• ou encore la valeur propre la plus proche d’une valeur donn´ee.</p>
+        </sec>
+        <sec id="sec-14-1-10">
+          <title>Ces m´ethodes permettent de trouver le vecteur propre correspondant.</title>
+        </sec>
+        <sec id="sec-14-1-11">
+          <title>Les m´ethodes globales s’int´eressent `a trouver le spectre tout entier</title>
+          <p>c’est `a dire λ1, . . . , λn.</p>
+        </sec>
+        <sec id="sec-14-1-12">
+          <title>Ces m´ethodes pr´esentent l’inconv´enient de ne pas donner en g´en´eral directement les vecteurs propres.</title>
+          <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        </sec>
+        <sec id="sec-14-1-13">
+          <title>Les m´ethodes partielles visent le calcul</title>
+          <p>• de la plus grande valeur propre en module λ1 (si elle est unique) !,
+• la plus petite valeur propre en module λn (si elle est unique) !,
+• ou encore la valeur propre la plus proche d’une valeur donn´ee.</p>
+        </sec>
+        <sec id="sec-14-1-14">
+          <title>Ces m´ethodes permettent de trouver le vecteur propre correspondant.</title>
+        </sec>
+        <sec id="sec-14-1-15">
+          <title>Les m´ethodes globales s’int´eressent `a trouver le spectre tout entier</title>
+          <p>c’est `a dire λ1, . . . , λn.</p>
+        </sec>
+        <sec id="sec-14-1-16">
+          <title>Ces m´ethodes pr´esentent l’inconv´enient de ne pas donner en g´en´eral directement les vecteurs propres.</title>
+          <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-15">
+      <title>Algorithme de la puissance it´er´ee</title>
+      <p>D´etermination de la plus grande valeur propre au moyen de l’algorithme suivant
+ q(0) ∈ Rn tel que q(0) 2 = 1,
+ x (k) = Aq(k−1), ∀k ∈ N∗
+ q(k) = 1 x (k).</p>
+      <p> kx (k)k2</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+    </sec>
+    <sec id="sec-16">
+      <title>Algorithme de la puissance it´er´ee</title>
+      <p>D´etermination de la plus grande valeur propre au moyen de l’algorithme suivant
+ q(0) ∈ Rn tel que q(0) 2 = 1,
+ x (k) = Aq(k−1), ∀k ∈ N∗
+ q(k) = 1 x (k).</p>
+      <p> kx (k)k2</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+    </sec>
+    <sec id="sec-17">
+      <title>Algorithme de la puissance it´er´ee</title>
+      <p>D´etermination de la plus grande valeur propre au moyen de l’algorithme suivant
+ q(0) ∈ Rn tel que q(0) 2 = 1,
+ x (k) = Aq(k−1), ∀k ∈ N∗
+ q(k) = 1 x (k).</p>
+      <p> kx (k)k2</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      <sec id="sec-17-1">
+        <title>Remarque et Exemple (`a la main !)</title>
+        <p>Dans la pratique le choix de q(0) avec kqk2 = 1 est au hasard, ce qui ne pose pas
+de probl`eme grˆace (paradoxalement) aux erreurs d’arrondi (b´en´efiques ! ! !).</p>
+        <p>La limite qui donne q est donn´ee dans le sens de valeurs d’adh´erence.
+Ainsi, on peut ”approcher” la valeur propre la plus grande en module par
+αα(12())t =x(t2)xq((11))q=(0) 1=3146 13≈0 =3.≈4131.736343730353.333,</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <p>Les deux r´esultats (`a admettre) repr´esentent des condtions suffisantes simples `a
+v´erifier pour qu’une matrice soit diagonalisable ou sa valeur propre de plus
+grand module λ1 soit unique.</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <p>M´ethodes partielles La m´ethode de la puissance (it´er´ee) La m´ethode de la puissance inverse</p>
+      </sec>
+      <sec id="sec-17-2">
+        <title>Remarque et Exemple (avec matlab)</title>
+        <p>Dans le th´eor`eme qui donne la convergence de l’algorithme de la puissance
+it´er´e, on peut prendre q(0) quelconque mˆeme kqk2 6= 1 grˆace `a
+normalisation effectu´e `a partir de la deuxi`eme it´eration.</p>
+        <p>Si le probl`eme aux valeurs valeurs propres est bien conditionn´e (cette
+notion est diff´erente d’un syst`eme lin´eaire bien), on consid´erer le test
+d’arrˆet des incr´ements |α(k) − αk−1)| ≤ ε (ε est la pr´ecision).</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      </sec>
+    </sec>
+    <sec id="sec-18">
+      <title>Id´ee et Algorithme</title>
+      <sec id="sec-18-1">
+        <title>D´etermination de la plus petite valeur propre d’une matricee. Si A est</title>
+        <p>diagonalisable dont les v.p. sont telles que 0 &lt; |λ1| ≤ |λ2| ≤ · · · ≤ |λn|. Donc,
+A est inversible et A−1 est diagonalisable dont les valeurs propres sont telles que
+1
+λn</p>
+        <p>1
+≤ λn−1
+ q(0) ∈ Rn tel que q(0)
+
+
+</p>
+        <p>Trouver x(k) tel que Ax2(k) = q(k−1), ∀k ∈ N?
+1
+= 1,
+Dans la m´ethode de la puissance inverse on ne calcule pas A−1 mais on r´esout
+des syst`eme (Trouver x(k) tel que Ax(k) = q(k−1)).</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <sec id="sec-18-1-1">
+          <title>M´ethode de Jacobi et Rotations de Givens</title>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-19">
+      <title>Rotations de Givens</title>
+      <p>Pour tout couple (p, q) tel que 1 ≤ p &lt; q ≤ n et θ ∈ [0, 2Π[ la matrice de
+rotation de Givens Qp,q(θ) est d ´efinie par
+Qp,q(θ)
+ 1
+. . .</p>
+      <p>. . .
+. . .
+. . .
+. . .
+. . . . . . . . .</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres
+Cette m´ethode concerne les matrices sym´etriques. La m´ethode de Jacobi
+propose de construire `a l’aide des rotations de Givens une suite de matrices
+A(k) orthogonalement semblables `a la matrice d’origine qui converge
+k∈N∗
+vers une matrice diagonale.</p>
+      <p>Pour une matrice sym´etrique A ∈ Mn(R) et pour p &lt; q, on peut trouver une
+π π
+valeur de θ dans ] − 4 4
+, ] tel que la matrice</p>
+      <p>M = t Qp,q(θ)AQp,q(θ)
+v´erifie mpq = 0 et mqp = 0. En effet
+→ Si apq = 0, on prend θ = 0.
+→ Si apq 6= 0. Donc, si on pose
+on d´etermine enfin θ comme solution de
+β = aqq − app , t =
+2apq
+−β − pβ2 + 1 si β &lt; 0,
+−β + pβ2 + 1 si β ≥ 0,</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+    </sec>
+    <sec id="sec-20">
+      <title>Algorithme</title>
+      <p>La m´ethode de Jacobi consiste `a construire une suite de matrices sym´etriques
+A(k) orthogonalement semblables `a A. Plus pr´ecis´ement, on prend
+k∈N?
+A(0) = A et pour tout k, (p, q) tq 1 ≤ p &lt; q ≤ n et Ak est construite par
+A(k+1) = t Qp,q(θ)A(k)Qp,q(θ)
+• La matrice A(k) est orthogonalement semblable `a A, avec A(k) = t Q(k)AQ(k)
+ou` Q(k) est le produit de k matrices de Givens. Alors Q(k) converge, en
+g´en´eral, vers une matrice Q dont les colonnes constituent une base
+orthonormale de vecteurs propres de A.
+• La diagonale de A est transform´ee de la mani`ere suivante :
+- les coefficients d’indices diff´erents de (p, p) et de (q, q) ne sont pas chang´es.
+-le coefficient d’indice (p, p) est transform´ee en app − apq tan θ et le coefficient
+d’indice (q, q) est transform´e en aqq + apq tan θ.</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres
+Convergence de la m´ethode de Jacobi et exemple d’application
+Si on choisit (p, q) tel que ap(kq) soit le coefficient extradiagonal de A(k) de plus
+grand module alors la m´ethode de jacobi (dite dans ce cas classique) converge
+vers une matrice diagonale.
+Ainsi, les valeurs propres de A sont −1, 5 et −1, et les colones de Q(2)
+constituent une base de vecteurs propres associ´e.</p>
+      <p>Cours d’Analyse Num´erique (1 CSC)-2018/2019.Hamid HADDADOU M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      <p>A2 =. U1L1.</p>
+      <sec id="sec-20-1">
+        <title>Etape2 : On d´etermine (si possible !)L2 et U2 telles que</title>
+        <p>Etape k : On a Ak =. Uk−1Lk−1 et on d´etermine (si possible !) Lk et Uk telles
+que Ak</p>
+        <p>En it´erant ce proc´ed´e, on obtient une suite (Ak )k∈N∗ .</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <p>A2 =. U1L1.</p>
+      </sec>
+      <sec id="sec-20-2">
+        <title>Etape2 : On d´etermine (si possible !)L2 et U2 telles que</title>
+        <p>Etape k : On a Ak =. Uk−1Lk−1 et on d´etermine (si possible !) Lk et Uk telles
+que Ak</p>
+        <p>En it´erant ce proc´ed´e, on obtient une suite (Ak )k∈N∗ .</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <p>A3 =. U2L2.</p>
+      </sec>
+      <sec id="sec-20-3">
+        <title>Etape2 : On d´etermine (si possible !)L2 et U2 telles que</title>
+        <p>Etape k : On a Ak =. Uk−1Lk−1 et on d´etermine (si possible !) Lk et Uk telles
+que Ak</p>
+        <p>En it´erant ce proc´ed´e, on obtient une suite (Ak )k∈N∗ .</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <p>Ak+1 =. Uk Lk</p>
+      </sec>
+      <sec id="sec-20-4">
+        <title>Etape2 : On d´etermine (si possible !)L2 et U2 telles que</title>
+        <p>Etape k : On a Ak =. Uk−1Lk−1 et on d´etermine (si possible !) Lk et Uk telles
+que Ak</p>
+        <p>En it´erant ce proc´ed´e, on obtient une suite (Ak )k∈N∗ .</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres
+Toutes les matrices Ak sont semblables `a A. En effet, comme toutes les Lk
+sont inversibles, on a</p>
+        <p>A2 =. U1L1 =⇒ L1A2 = L1U1L1 = A1L1 =⇒ A2 = (L1)−1A1L1.</p>
+        <p>Ainsi, Ak+1 = (L1...Lk )−1A1(L1...Lk ). Donc, en posant Rk = L1...Lk , il vient</p>
+        <p>Ak+1 = Rk−1A1Rk =. Rk−1ARk .</p>
+        <p>Th´eor`eme
+Supposons que A est inversible, les valeurs propres de A sont r´eelles et distincts
+en valeuret absolue, et ∀k ∈ N? Ak admet une la factorisation LU. Alors
+M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      </sec>
+      <sec id="sec-20-5">
+        <title>Etape2 : On d´etermine Q2 et R2 telles que</title>
+        <p>Ak+1 =. Rk Qk
+Etape k : On a Ak =. Rk−1Qk−1 et on d´etermine Qk et Rk telles que Ak
+En it´erant ce proc´ed´e, on obtient une suite (Ak )k∈N∗ .
+M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <p>Ak+1 =. Rk Qk
+Etape k : On a Ak =. Rk−1Qk−1 et on d´etermine Qk et Rk telles que Ak
+En it´erant ce proc´ed´e, on obtient une suite (Ak )k∈N∗ .
+M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+        <p>Ak+1 =. Rk Qk
+Etape k : On a Ak =. Rk−1Qk−1 et on d´etermine Qk et Rk telles que Ak
+En it´erant ce proc´ed´e, on obtient une suite (Ak )k∈N∗ .
+M´ethodes num´eriques de calcul des valeurs et vecteurs propres
+En it´erant ce proc´ed´e, on obtient une suite (Ak )k∈N∗ .</p>
+        <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      </sec>
+    </sec>
+    <sec id="sec-21">
+      <title>Remarque</title>
+      <p>Dans la pratique on pr´efere utiliser la m´ethode QR au lieu LR,`a cause de la
+pr´ecision et le fait qu’on peut toujours factoriser sous la forme QR `a l’inverse
+de LU.
+Toutes les matrices Ak sont semblables `a A.
+Soit A une matrice de Mn(R) sym´etrique d´efinie positive. Alors, la suite des
+matrices (Ak )k∈N∗ d´efinie par la m´ethode QR converge vers une matrice
+diagonale.</p>
+    </sec>
+    <sec id="sec-22">
+      <title>Corollaire</title>
+      <p>Les valeurs propres d’une matrice A ∈ Mn(R) sym´etrique d´efinie positive sont
+les ´el´ements diagonaux de la matrice limite de la suite (Ak )k∈N∗ .</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres</p>
+      <sec id="sec-22-1">
+        <title>Utilisation de la m´ethode QR dans la pratique</title>
+        <p>Sous cette forme na¨ıve, l’algorithme est tr`es mauvais num´eriquement si la
+matrice A est pleine et surtout si sa taille n est grande. En effet, il est tr´es
+couˆteux car chaque d´ecomposition QR demande de l’ordre de n3 op´erations et
+il est aussi peu stable si la d´ecomposition est obtenue par le proc´ed´e de
+Gram-Schmidt. Pour ¸ca en pratique on applique l’algorithme qu’aux matrices
+de Hessenberg. On transforme d’abord la matrice initiale A en une matrice
+orthogonale semblable de type Hessenberg sup´erieure et on applique `a cette
+derni`ere pour obtenir les valeurs propres de A.</p>
+      </sec>
+    </sec>
+    <sec id="sec-23">
+      <title>Th´eor`eme (Cas particulier)</title>
+      <p>Si la matrice initiale A est Hessemberg sup´erieure, c’est `a dire :H est de la
+forme</p>
+      <p>M´ethodes num´eriques de calcul des valeurs et vecteurs propres
+Pour justifier cette modification de l’algorithme, on donne le r´esultat suivant :</p>
+      <p>t QAQ = H.</p>
+      <p>ou` la matrice H est Hessemberg sup´erieure.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list />
+  </back>
+</article>
