@@ -1,0 +1,59 @@
+from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel, EmailStr
+
+
+class UserCreate(BaseModel):
+    email: EmailStr
+    password: str
+    username: str
+    role:str
+
+
+class UserOut(BaseModel):
+    id: int
+    email: EmailStr
+    username: str
+    role:str
+    created_at: datetime
+
+    class Config:
+        orm_mode = True
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    id: Optional[str] = None
+
+#Response model hbb
+
+"""
+class PostBase(BaseModel):
+    title: str
+    content: str
+    published: bool = True
+
+
+class PostCreate(PostBase):
+    pass
+
+
+
+class Post(PostBase):
+    id: int
+    created_at: datetime
+    owner_id: int
+    owner: UserOut
+
+    class Config:
+        orm_mode = True
+"""
