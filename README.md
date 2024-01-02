@@ -4,6 +4,8 @@ une application Web permettant à l’utilisateur de rechercher des articles sci
 
 # simou says:
 
-Quand vous clonez le repo faites cette commande : pip install -r requirements.txt
-ensuite : uvicorn app.main:app --reload
+Quand vous clonez le repo faites ces commandes : 
+cd maqaal-back
+pip install -r requirements.txt
 modifiez aussi les infos de la bdd postgres dans .env
+ensuite : uvicorn app.main:app --reload
