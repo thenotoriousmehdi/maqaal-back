@@ -1,15 +1,42 @@
-from .. import models, oauth2, schemas
 from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
+from fastapi.responses import JSONResponse
+from .. import models, oauth2, schemas
 from ..database import get_db
 from sqlalchemy.orm import Session
 from typing import List, Optional
 
+from app.esSearch import perform_search
+from app.elasticSearchLogic import ElasticSearch_indexation
+
 router = APIRouter(prefix="/posts", tags=["Posts"])
+
+@router.get("/")
+def get_posts():
+    return {"message":"hello from posts"}
+
+@router.get('/Perform_search')
+async def hello():
+    serach_result=perform_search()
+    print(serach_result)
+    data={"message":"hello from backend"}
+    return JSONResponse(content=data)
+
+@router.get('/index')
+async def EsIndexing():
+    try:    
+        await ElasticSearch_indexation("./app/jsonsample.json");
+        return {"message":"indexing went well "}
+    except Exception as e:
+        print(e)
+        return{"message":"index failed"}
+
+
+
 
 """
 @router.get("/", response_model=List[schemas.Post])
 # async
-def get_posts(
+def get_posts(a
     db: Session = Depends(get_db),
     current_user: int = Depends(oauth2.get_current_user),
     limit: int = 10,

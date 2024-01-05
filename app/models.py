@@ -16,6 +16,8 @@ class User(Base):  # extend base
         TIMESTAMP(timezone=True), nullable=False, server_default=text("now()")
     )
 
+
+
 # class Post(Base):  
 #     __tablename__ = "posts"
 
@@ -30,8 +32,6 @@ class User(Base):  # extend base
 #         Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
 #     )
 #     owner = relationship("User")
-
-
 
 # class Vote(Base):
 #     __tablename__ = "votes"
