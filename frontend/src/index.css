@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper-button-prev {
+    left: 0px !important;
+    color: #FF6F61 !important;
+}
+.swiper-button-next {
+    right: 0px !important;
+    color: #FF6F61 !important;
+    
+}
+
+
+.AccordionContent[data-state='open'] {
+    animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  }
+  .AccordionContent[data-state='closed'] {
+    animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  }
+  
+  .AccordionContent {
+    overflow: hidden;}
+  .AccordionChevron {
+   
+    transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  }
+  .AccordionTrigger[data-state='open'] > .AccordionChevron {
+    transform: rotate(180deg);
+  }
+  
+
+  .MuiButtonBase-root{
+    border-radius: 40px !important;
+     color: black !important;
+  }
+   .MuiButton-root{
+    border-radius: 40px !important;
+   
+       } 
+       .MuiChip-root{
+         background-color: #F5F5DC !important;
+       }
+   .MuiTouchRipple-root {
+    border-radius: 40px !important;
+   }
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
