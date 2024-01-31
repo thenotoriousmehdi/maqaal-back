@@ -3,7 +3,10 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import Session,engine
+from schemas import SignUpModel
 from models import User
+
+from routers import users,articles
 
 from fastapi.exceptions import HTTPException
 from werkzeug.security import generate_password_hash , check_password_hash
@@ -15,8 +18,6 @@ import subprocess
 
 app = FastAPI()
 
-session=Session(bind=engine)
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -25,18 +26,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(users.router)
+app.include_router(articles.router)
 
+  
 @app.get("/")
 async def main():
     return {"message":"hello from main"}
 
-@app.get("/user")
-async def getUser():
-    try:
-        db_user=session.query(User).filter(User.username=="riad").first()
-    except Exception as e:
-        db_user="probleme"
-        print(e)
 
-    return {"message":db_user}
+
 
