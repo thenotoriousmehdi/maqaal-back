@@ -7,6 +7,14 @@ router = APIRouter(tags=["Authentification"])
 # router = APIRouter(prefix="/users", tags=["Users"])
 
 
+@router.get("/users/me", response_model=schemas.UserOut)
+async def get_user(
+    db: Session = Depends(database.get_db),
+    current_user: int = Depends(oauth2.get_current_user),
+):
+    return current_user
+
+
 @router.post("/login", response_model=schemas.Token)
 def login(
     user_credentials: OAuth2PasswordRequestForm = Depends(),
@@ -32,7 +40,7 @@ def login(
 
 
 @router.post(
-    "/signup", status_code=status.HTTP_201_CREATED, response_model=schemas.UserOut
+    "/signup", status_code=status.HTTP_201_CREATED, response_model=schemas.Token
 )
 def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
     # hash the password - user.password
@@ -45,7 +53,8 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db)
     db.commit()
     db.refresh(new_user)
 
-    return new_user
+    access_token = oauth2.create_access_token(data={"user_id": new_user.id})
+    return {"access_token": access_token, "token_type": "bearer"}
 
 
 # @router.get("/{id}", response_model=schemas.UserOut)
