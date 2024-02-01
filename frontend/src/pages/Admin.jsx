@@ -33,11 +33,22 @@ function SubmitEvent(e){
     method: 'POST',
     body: formData,
   };
+  const options2 = {
+    method: 'GET',
+  };
 
   fetch('http://127.0.0.1:8000/article/upload', options)
     .then(response => response.json())
     .then(data => {
-      console.log(data); // Handle the response data as needed
+      console.log(data); 
+      var fileName = data.file_path.split("/").pop() 
+      console.log("hi");
+      return fetch(`http://127.0.0.1:8000/article/extract/${fileName}`,options2);
+    })
+    .then(response => response.json())
+    .then(data =>{
+      console.log("got here this is good ");
+      console.log(data);
     })
     .catch(error => {
       console.error('Error:', error);
