@@ -22,19 +22,26 @@ async def main():
     
     return {"message":"hi from articles"}
 
- 
 @router.post('/upload')
 async def upload(file:UploadFile=File(...)):  #create File instance 
 
     file_ext=file.filename.split(".").pop()    
-    file_name=secrets.token_hex(10)   #gives it unique name 
-    file_path=f"./routers/pdfFiles/{file_name}.{file_ext}"
+    file_name=secrets.token_hex(10)   #gives it unique name
+     
+    file_path=f"./pdfFiles/{file_name}.{file_ext}"
     print(file_path)
     with open(file_path,"wb") as f:
         content = await file.read()
         f.write(content)
+ 
+
+   
 
     return {"success":True, "file_path":file_path}
+
+ 
+
+ 
 
 
 

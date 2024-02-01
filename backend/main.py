@@ -39,8 +39,6 @@ async def run_cermine_extraction():
     ]
 
     result = subprocess.run(command, capture_output=True, text=True, check=True)
-    print(result.stdout) 
-     
 
 #temp postion (should be in router)
 @app.get('/article/extract/{fileName}')
@@ -69,13 +67,12 @@ async def extract(fileName:str):
 
     #xml data to json 
     dataframe=pdx.read_xml(xml_content)
+
+    print(dataframe)
     return({"data":dataframe})
 
-  
+
 @app.get("/")
 async def main():
     return {"message":"hello from main"}
-
-
-
 

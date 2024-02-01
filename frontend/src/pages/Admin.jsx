@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CgProfile } from 'react-icons/cg'; // Import CgProfile
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -19,12 +19,11 @@ import classNames from 'classnames';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 
-function SubmitEvent(e){
+async function SubmitEvent(e){
   e.preventDefault();
 
   const fileInput = document.querySelector('input[type="file"]');
-  console.log(fileInput);
-
+   
   const formData = new FormData();
   formData.append('file', fileInput.files[0]);
 
@@ -35,25 +34,35 @@ function SubmitEvent(e){
   };
   const options2 = {
     method: 'GET',
-  };
-
-  fetch('http://127.0.0.1:8000/article/upload', options)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data); 
+  };  
+  
+    /* fetch('http://127.0.0.1:8000/article/upload', options)
+    .then((res)=>{
+      return res.json()
+    })
+    .then((data)=>{
       var fileName = data.file_path.split("/").pop() 
-      console.log("hi");
+      console.log(fileName);
       return fetch(`http://127.0.0.1:8000/article/extract/${fileName}`,options2);
     })
     .then(response => response.json())
     .then(data =>{
-      console.log("got here this is good ");
+      console.log("extract fetch got executed well");
       console.log(data);
     })
+
     .catch(error => {
       console.error('Error:', error);
-    });
+    }); */
 
+    var data = await (await fetch('http://127.0.0.1:8000/article/upload', options)).json()
+    console.log(data.file_path);
+    var fileName = data.file_path.split("/").pop() 
+    console.log(fileName);
+
+    var data2 =await fetch(`http://127.0.0.1:8000/article/extract/${fileName}`,options2); 
+    console.log("hihi"+ data2);
+    
 }
 
 
