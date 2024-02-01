@@ -22,11 +22,14 @@ class SignUpModel(BaseModel):
                 "username":"newUser",
 		        "email":"nexUser@gmail.com",
 		        "password":"passNEwUSER",
-                
             }
         }
- 
 
- 
+        
+""" 
+class FileUploadSchema(BaseModel):
+    file_url:str
+
+  """
    
  

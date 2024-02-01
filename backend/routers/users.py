@@ -17,7 +17,7 @@ session=Session(bind=engine)
 @router.get("/")
 async def main():
     
-    return {"message":"hi"}
+    return {"message":""}
 
 @router.post("/signup", status_code=status.HTTP_201_CREATED)
 async def signup(user:SignUpModel):

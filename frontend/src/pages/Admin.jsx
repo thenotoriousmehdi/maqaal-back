@@ -19,6 +19,34 @@ import classNames from 'classnames';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 
+function SubmitEvent(e){
+  e.preventDefault();
+
+  const fileInput = document.querySelector('input[type="file"]');
+  console.log(fileInput);
+
+  const formData = new FormData();
+  formData.append('file', fileInput.files[0]);
+
+  // Fetch options
+  const options = {
+    method: 'POST',
+    body: formData,
+  };
+
+  fetch('http://127.0.0.1:8000/article/upload', options)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // Handle the response data as needed
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+}
+
+
+
 export const Admin = () => {
 
     const [open, setOpen] = React.useState(false);
@@ -81,8 +109,16 @@ const [Mdperror , setMdperror] = useState(false)
     <>
       <h1 className=' text-3xl sm:text-4xl font-title my-6 font-extrabold mx-5 sm:mx-12 xl:mx-32 text-primary '>Bonjour , <span className=' text-rosee'>Admin</span> </h1>
       {/* FILE UPLOAD */}
-      <div className=' mx-5 my-12 sm:mx-12 xl:mx-32 text-white bg-primary rounded-xl h-36 lg:h-48 p-10 lg:p-32 text-center font-body text-2xl xl:text-4xl font-bold'>
+      <div className=' mx-5 my-12 sm:mx-12 xl:mx-32 text-white bg-primary rounded-xl   p-10 lg:p-32 text-center font-body text-2xl xl:text-4xl font-bold'>
         file upload
+
+        <form className='p-4 flex flex-col ' method="POST" action="http://127.0.0.1:8000/article/upload" encType='multipart/form-data'>
+          <input className='m-auto align-item' type="file" name='file'  />
+ 
+          <button className='text-rosee  round-3 hover:bg-sky-700 w-32 p-2 m-auto mt-5' onClick={SubmitEvent} type='submit'>submit</button>
+        </form>
+
+
       </div>
 
       {/* moderateurs list */}

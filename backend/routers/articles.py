@@ -1,15 +1,18 @@
-from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
+from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter,UploadFile,File
 from fastapi.responses import JSONResponse
 from database import Session,engine
 
 from models import Article
 """ from schemas import SignUpModel """
+""" from schemas import FileUploadSchema """
 
 from sqlalchemy.orm import Session
+from werkzeug.security import generate_password_hash , check_password_hash
 from typing import List, Optional
 
-from werkzeug.security import generate_password_hash , check_password_hash
-
+import os
+import secrets
+import subprocess
 
 router = APIRouter(prefix="/article", tags=["articles"])
 session=Session(bind=engine)
@@ -18,3 +21,37 @@ session=Session(bind=engine)
 async def main():
     
     return {"message":"hi from articles"}
+
+
+
+""" @router.post('/upload')
+async def upload(file_path:FileUploadSchema,file:UploadFile=File(...)): 
+
+    file_ext=file_path.file_url.split(".")[1]
+    fileU=file_path.file_url.split(".")[0]
+ 
+    file_name=secrets.token_hex(5)   #gives it unique name 
+    file_path=f"{fileU}_{file_name}.{file_ext}"
+     
+    with open(file_path,"wb") as f:
+        content = await file.read()
+        f.write(content) 
+
+    return {"success":"hi"}
+ """
+
+
+@router.post('/upload')
+async def upload(file:UploadFile=File(...)):  #create File instance 
+
+    file_ext=file.filename.split(".").pop()    
+    file_name=secrets.token_hex(10)   #gives it unique name 
+    file_path=f"./routers/uploads/{file_name}.{file_ext}"
+    print(file_path)
+    with open(file_path,"wb") as f:
+        content = await file.read()
+        f.write(content)
+
+    return {"success":True, "file_path":file_path}
+
+
