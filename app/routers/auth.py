@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, status, HTTPException, Response
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
@@ -55,6 +56,30 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db)
 
     access_token = oauth2.create_access_token(data={"user_id": new_user.id})
     return {"access_token": access_token, "token_type": "bearer"}
+
+
+@router.get("/moderateurs", response_model=List[schemas.UserOut])
+def getMods(db: Session = Depends(database.get_db)):
+    mods = db.query(models.User).filter(models.User.role == "moderateur").all()
+    return mods
+
+
+@router.delete("/moderateurs/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def deleteModerateur(
+    id: int,
+    db: Session = Depends(database.get_db),
+):
+    mod_query = db.query(models.User).filter(models.User.id == id)
+    mod = mod_query.first()
+    if mod == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"post with id: {id} does not exist",
+        )
+
+    mod_query.delete(synchronize_session=False)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 # @router.get("/{id}", response_model=schemas.UserOut)
