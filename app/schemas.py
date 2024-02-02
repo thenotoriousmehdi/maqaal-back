@@ -7,14 +7,18 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     username: str
-    role:str
+    role: str
+    dateNaissance:str
+    gender:str
 
 
 class UserOut(BaseModel):
     id: int
     email: EmailStr
     username: str
-    role:str
+    role: str
+    dateNaissance:str
+    gender:str
     created_at: datetime
 
     class Config:
@@ -34,7 +38,8 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     id: Optional[str] = None
 
-#Response model hbb
+
+# Response model hbb
 
 """
 class PostBase(BaseModel):

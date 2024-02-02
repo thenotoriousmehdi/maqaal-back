@@ -69,6 +69,7 @@ def deleteModerateur(
     id: int,
     db: Session = Depends(database.get_db),
 ):
+    print(id)
     mod_query = db.query(models.User).filter(models.User.id == id)
     mod = mod_query.first()
     if mod == None:
