@@ -14,6 +14,10 @@ import os
 import secrets
 import subprocess
 
+from routers.esSearch import perform_search
+from routers.elasticSearchLogic import ElasticSearch_indexation
+
+
 router = APIRouter(prefix="/article", tags=["articles"])
 session=Session(bind=engine)
  
@@ -34,11 +38,29 @@ async def upload(file:UploadFile=File(...)):  #create File instance
         content = await file.read()
         f.write(content)
  
-
-   
-
     return {"success":True, "file_path":file_path}
 
+@router.get('/index')
+async def EsIndexing():
+    try:
+        
+        await ElasticSearch_indexation();
+
+        return {"message":"indexing went well "}
+    except Exception as e: 
+        print("indexing failed")
+        print(e)
+        return {"message":"indexing went wrong "}
+        
+@router.get('/Perform_search')
+async def serachInEs():
+
+    serach_result=perform_search()
+    """ print(serach_result) """
+
+    return {"message":serach_result}
+     
+ 
  
 
  

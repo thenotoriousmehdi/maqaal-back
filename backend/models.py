@@ -6,7 +6,6 @@ from sqlalchemy.sql import func
  
 from datetime import datetime
 
- 
 class User(Base):
     USER_ROLE = (
         ('REGULAR', 'regular'),
@@ -25,7 +24,8 @@ class User(Base):
     password = Column(Text,nullable=True)   
     role = Column(ChoiceType(choices=USER_ROLE), default="REGULAR")
     created_at = Column(DateTime, default=func.now())
-    articles_favoris = relationship("Article", back_populates="user")   
+
+    articles_tag = relationship("Article", back_populates="article")
 
     def __repr__(self):
         return f"<User {self.username}>"
@@ -44,9 +44,22 @@ class Article(Base):
     pdf_url = Column(String(255))
     bibliography_reference = Column(String(500))
     created_at = Column(DateTime, default=func.now())
+
+    """ 
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", back_populates="articles_favoris")  # Updated relationship name
+    """
 
+    
     def __repr__(self):
         return f"<Article {self.id}>"
-    
+      
+#table of set (article-tag)
+class Tag(Base):
+    __tablename__ = "tags"
+
+    id = Column(Integer, primary_key=True)
+    tagname=Column(String(255))
+    article_id=(Integer,ForeignKey("articles.id"))
+
+    article = relationship("Article", back_populates="articles_tag")
