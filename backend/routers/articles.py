@@ -36,7 +36,8 @@ async def doExist(data: dict):
         with open(f"./routers/doExist.json", 'r') as file:
             doExist_json = json.load(file)
 
-        flag = doExist_json.get(received_data, False)
+        flag = doExist_json.get(received_data, False) 
+         
     except FileNotFoundError:
         flag = False
         print("File does not exist")
@@ -58,9 +59,24 @@ async def doExist(data: dict):
         return {"info": True}
 
 
+""" @router.post('/upload')
+async def upload(file:UploadFile=File(...)):  #create File instance 
+     
+    file_ext=file.filename.split(".").pop()    
+    file_name=secrets.token_hex(10)   #gives it unique name
+     
+    file_path=f"./pdfFiles/{file_name}.{file_ext}"
+    print(file_path)
+    with open(file_path,"wb") as f:
+        content = await file.read()
+        f.write(content)
+ 
+    return {"success":True, "file_path":file_path} """
+
+
 @router.post('/upload')
 async def upload(file:UploadFile=File(...)):  #create File instance 
-
+    print("hey")
     file_ext=file.filename.split(".").pop()    
     file_name=secrets.token_hex(10)   #gives it unique name
      
@@ -72,6 +88,8 @@ async def upload(file:UploadFile=File(...)):  #create File instance
  
     return {"success":True, "file_path":file_path}
 
+
+ 
 
 @router.get('/index')
 async def EsIndexing():

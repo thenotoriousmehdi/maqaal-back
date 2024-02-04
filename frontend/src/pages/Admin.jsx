@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect  } from 'react';
 import { CgProfile } from 'react-icons/cg'; // Import CgProfile
 import { Link, json } from 'react-router-dom';
 
@@ -19,82 +19,96 @@ import classNames from 'classnames';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
  
-
-
 export const Admin = () => {
+  const [fileName, setFileName] = useState('');
+   
+
+  useEffect(() => {
+    console.log("Updated: " + fileName);
+    // You can perform additional logic based on the updated fileName here
+  }, [fileName]);
 
   const handleFileChange = (event) => {
     const fileInput = event.target;
     if (fileInput.files.length > 0) {
       const selectedFile = fileInput.files[0];
       setFileName(selectedFile.name);
+      console.log(selectedFile.name);
     } else {
       setFileName('');
     }
   };
 
-
-  const [fileName, setFileName] = useState('');
+  
   async function SubmitEvent(e){
     e.preventDefault();
-    
+
   console.log('File Name:', fileName);
-    
+   
   const response = await fetch("http://127.0.0.1:8000/article/doExist", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json', 
-    },
-    body: JSON.stringify({ data: fileName }), 
-  });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data: fileName }),
+    });
 
   const responseData = await response.json();
   console.log(responseData);
 
-
   var upload=false
-  if(responseData!=null){
-    console.log("file does existe you can't upload it ");
+  if(responseData.info){
+    console.log("Already exists")
   }else{
-    console.log("new file to upload");
+    console.log("New file")
     upload=true
   }
+  
+  const fileInput = document.querySelector('input[type="file"]');
+   
+  
+  const options2 = {
+    method: 'GET',
+     headers: {
+  'Content-Type': 'text/plain', // Set the content type to text/plain
+  },
+    };
 
-  // Fetch options
+
+  if(upload){
+
+    //Upload File
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+   
     const options = {
       method: 'POST',
-       headers: {
-    'Content-Type': 'text/plain', // Set the content type to text/plain
-    },
-      
       body: formData,
     };
-    const options2 = {
-      method: 'GET',
-       headers: {
-    'Content-Type': 'text/plain', // Set the content type to text/plain
-    },
-      }; 
-  
 
 
-    if(upload){
-      //Upload File
-      var response1 = await (await fetch('http://127.0.0.1:8000/article/upload', options)).json()
-      console.log(response.file_path);
-      var fileName = response.file_path.split("/").pop() 
-      console.log(fileName);
-  
-      //Verify if file already exists 
-  
-      //extract The upladed file
-      var response2 =await fetch(`http://127.0.0.1:8000/article/extract/${fileName}`,options2); 
-      console.log("hihi"+ response2);
-  
-      //Index the files
-      var response3 = await fetch("http://127.0.0.1:8000/article/index",options2)
-    }
     
+    var response1 = await (await fetch('http://127.0.0.1:8000/article/upload',options)).json()
+    console.log(response1);
+
+    console.log(response1.file_path);
+    var fileNamehex = response1.file_path.split("/").pop() 
+    console.log(fileNamehex);
+  
+    //extract The upladed file
+    var response2 =await fetch(`http://127.0.0.1:8000/article/extract/${fileNamehex}`,options2); 
+    console.log("hihi"+ response2);
+
+
+
+    //Index the files
+    var response3 = await fetch("http://127.0.0.1:8000/article/index",options2)  
+
+ 
+
+
+
+   }  
   }
 
 
@@ -121,14 +135,11 @@ export const Admin = () => {
     if (email === "" && password ===""){setOpen(false)}else{
     if( (password.length<4)&&( email.length!==0 || password.length!==0  ) ){setMdperror(true)}
     else(setMdperror(false))
-    if(email!=='' && password !='' && !Mdperror){
-         
-       
+    if(email!=='' && password !='' && !Mdperror){ 
        setOpen(false);
        setMdperror(false)
        setEmail("")
-       setPassword("")
-        
+       setPassword("")     
     }
    
     }
@@ -163,7 +174,7 @@ const [Mdperror , setMdperror] = useState(false)
         file upload
 
         <form className='p-4 flex flex-col ' method="POST" action="http://127.0.0.1:8000/article/upload" encType='multipart/form-data'>
-          <input onChange={handleFileChange}  className='m-auto align-item' type="file" name='file'  />
+          <input onChange={handleFileChange} className='m-auto     align-item ' type="file" name='fileUpload'  />
  
           <button className='text-rosee  round-3 hover:bg-sky-700 w-32 p-2 m-auto mt-5' onClick={SubmitEvent} type='submit'>submit</button>
         </form>
