@@ -18,57 +18,87 @@ import * as Accordion from '@radix-ui/react-accordion';
 import classNames from 'classnames';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
-
-async function SubmitEvent(e){
-  e.preventDefault();
-
-  const fileInput = document.querySelector('input[type="file"]');
-   
-  const formData = new FormData();
-  formData.append('file', fileInput.files[0]);
-
-  // Fetch options
-  const options = {
-    method: 'POST',
-    body: formData,
-  };
-  const options2 = {
-    method: 'GET',
-  };  
-  
-    /* fetch('http://127.0.0.1:8000/article/upload', options)
-    .then((res)=>{
-      return res.json()
-    })
-    .then((data)=>{
-      var fileName = data.file_path.split("/").pop() 
-      console.log(fileName);
-      return fetch(`http://127.0.0.1:8000/article/extract/${fileName}`,options2);
-    })
-    .then(response => response.json())
-    .then(data =>{
-      console.log("extract fetch got executed well");
-      console.log(data);
-    })
-
-    .catch(error => {
-      console.error('Error:', error);
-    }); */
-
-    var data = await (await fetch('http://127.0.0.1:8000/article/upload', options)).json()
-    console.log(data.file_path);
-    var fileName = data.file_path.split("/").pop() 
-    console.log(fileName);
-
-    var data2 =await fetch(`http://127.0.0.1:8000/article/extract/${fileName}`,options2); 
-    console.log("hihi"+ data2);
-    
-}
-
+ 
 
 
 export const Admin = () => {
 
+  const handleFileChange = (event) => {
+    const fileInput = event.target;
+    if (fileInput.files.length > 0) {
+      const selectedFile = fileInput.files[0];
+      setFileName(selectedFile.name);
+    } else {
+      setFileName('');
+    }
+  };
+
+
+  const [fileName, setFileName] = useState('');
+  async function SubmitEvent(e){
+    e.preventDefault();
+    
+  console.log('File Name:', fileName);
+    
+  const response = await fetch("http://127.0.0.1:8000/article/doExist", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json', 
+    },
+    body: JSON.stringify({ data: fileName }), 
+  });
+
+  const responseData = await response.json();
+  console.log(responseData);
+
+
+  var upload=false
+  if(responseData!=null){
+    console.log("file does existe you can't upload it ");
+  }else{
+    console.log("new file to upload");
+    upload=true
+  }
+
+  // Fetch options
+    const options = {
+      method: 'POST',
+       headers: {
+    'Content-Type': 'text/plain', // Set the content type to text/plain
+    },
+      
+      body: formData,
+    };
+    const options2 = {
+      method: 'GET',
+       headers: {
+    'Content-Type': 'text/plain', // Set the content type to text/plain
+    },
+      }; 
+  
+
+
+    if(upload){
+      //Upload File
+      var response1 = await (await fetch('http://127.0.0.1:8000/article/upload', options)).json()
+      console.log(response.file_path);
+      var fileName = response.file_path.split("/").pop() 
+      console.log(fileName);
+  
+      //Verify if file already exists 
+  
+      //extract The upladed file
+      var response2 =await fetch(`http://127.0.0.1:8000/article/extract/${fileName}`,options2); 
+      console.log("hihi"+ response2);
+  
+      //Index the files
+      var response3 = await fetch("http://127.0.0.1:8000/article/index",options2)
+    }
+    
+  }
+
+
+  
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     
@@ -133,7 +163,7 @@ const [Mdperror , setMdperror] = useState(false)
         file upload
 
         <form className='p-4 flex flex-col ' method="POST" action="http://127.0.0.1:8000/article/upload" encType='multipart/form-data'>
-          <input className='m-auto align-item' type="file" name='file'  />
+          <input onChange={handleFileChange}  className='m-auto align-item' type="file" name='file'  />
  
           <button className='text-rosee  round-3 hover:bg-sky-700 w-32 p-2 m-auto mt-5' onClick={SubmitEvent} type='submit'>submit</button>
         </form>

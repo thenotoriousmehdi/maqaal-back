@@ -70,7 +70,6 @@ async def extract(fileName:str):
 #extract data from xml , format it as json , then index it                              
 
     # Parse the XML file
-
     from lxml import etree
     import json
 
@@ -128,7 +127,6 @@ async def extract(fileName:str):
 
         sections.append(section)
 
-     
 
 
     # Extracting fields and creating a one-line string

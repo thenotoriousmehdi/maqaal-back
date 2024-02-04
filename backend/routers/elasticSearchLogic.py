@@ -3,7 +3,25 @@
 #***************
 import json
 
-map={
+map = {
+    "mappings": {
+        "properties": {
+            "institutions": {"type": "text"},
+            "auteurs": {"type": "text"},
+            "abstract": {"type": "text"},
+            "title": {"type": "text"},
+            "sections": {
+                "type": "nested",
+                "properties": {
+                    "title": {"type": "text"},
+                    "paragraphs": {"type": "text"}
+                }
+            }
+        }
+    }
+}
+
+""" maps={
   "mappings": {
     "properties": {
       "title": {
@@ -31,14 +49,21 @@ map={
       }
     }
   }
-}
+} """
 
 async def ElasticSearch_indexation():
 
     #This will connect to your local cluster.
     from elasticsearch import Elasticsearch
     es = Elasticsearch("http://localhost:9200")
+    index_name = "data"
+
+    if not es.indices.exists(index=index_name):
+      print("INDEX CREATION :")
+      es.indices.create(index=index_name, body=map)
+    
     es.info().body
+
 
     with open(f"./routers/articles_To_index.json", 'r') as file:
         data = json.load(file)
@@ -63,19 +88,18 @@ async def ElasticSearch_indexation():
     df = ( #May problem
         pd.read_json(dataIndexString)
         .dropna()
-        .sample(2, random_state=42)
         .reset_index()
     )
-
+    print("======= DATA FRAME START =======")
     print(df)
-
+    print("======= DATA FRAME END =======")
     import logging
 
     try:
         logging.basicConfig(level=logging.INFO)
         for i, row in df.iterrows():
             logging.info(f"Indexing row {i}")
-            
+            print("=============================")
             doc=row['data']
 
             print(es.indices.exists(index="data"))
@@ -88,7 +112,6 @@ async def ElasticSearch_indexation():
         print(e)
         return {"message":"bad"}
         
-  
 
     es.indices.refresh(index="data")
     es.cat.count(index="data", format="json")

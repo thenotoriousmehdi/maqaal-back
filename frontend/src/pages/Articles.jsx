@@ -19,7 +19,6 @@ const Articles = () => {
 
 
   const articles = [
-  
     {id: '1' , title : 'FrontEnd dev with react js '           , name : 'SAADAOUI KAHINA' ,  ifSaved : false}, 
     {id: '2' , title : 'La différence entre le UI et le UX   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : false}, 
     {id: '3' , title : 'La différence entre le UI et le UX   ' , name : 'BELDJOUDI WASSIM',  ifSaved : false}, 
@@ -33,18 +32,34 @@ const Articles = () => {
     {id: '11', title : 'La différence entre le UI et le UX   ' , name : 'BELDJOUDI WASSIM',  ifSaved : false}, 
     {id: '12', title : 'FastApi: the best python framewrok   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : false}, 
   ] 
+
+
   const [motsCles , setMotscles] = useState([]); 
   const [PE2DP,setPE2DP]= useState([]); 
   const [Auteurs,setAuteurs]= useState([]); 
   const [Institutions,setInstitutions]= useState([]); 
 
+  function StringifyMotsCles(objArr) {
+    let result = "";
+    
+    for (const item of objArr) {
+      result = `${item.title} ${result}`;
+    }
+  
+    return result; // trim to remove leading/trailing spaces
+  }
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(motsCles);
-    console.log(Auteurs);
-    console.log(Institutions);
-    console.log(PE2DP);
+    
+    console.log(StringifyMotsCles(motsCles)); 
+    console.log(StringifyMotsCles(Auteurs)); 
+    console.log(StringifyMotsCles(Institutions)); 
+    console.log(StringifyMotsCles(PE2DP)); 
+    
+    // Launch search based on the field 
+    
+
  };
 
 

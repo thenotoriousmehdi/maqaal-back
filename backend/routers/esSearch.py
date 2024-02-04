@@ -1,17 +1,14 @@
 from elasticsearch import Elasticsearch
 
-def perform_search():
+def perform_search(searchString):
     es = Elasticsearch("http://localhost:9200")
 
-    
     # Your search query
-     
     search_query_prim = {
         "bool": {
             "must":[{
                 "match":{
-                   
-                    "DocumentTitle":"Generating"
+                    "DocumentTitle":searchString
                 }
             }],
             "filter":[],

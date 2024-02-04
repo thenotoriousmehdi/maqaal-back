@@ -12,6 +12,23 @@ const heroSection = () => {
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
+   
+  const PerformSearch = async ()=>{
+  const response = await fetch("http://localhost:8000/article/Perform_search", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: searchQuery }),
+});  
+
+const dataObj = await response.json();
+console.log(dataObj.data.hits.hits[0]._source);
+
+}
+
+
   return (
     <>
     <div className=' font-title  text-primary   flex flex-wrap  w-full   bg-rosee  bg-opacity-6    items-center md:justify-between    pb-24  pt-2  '>
@@ -38,7 +55,7 @@ const heroSection = () => {
                 onChange={handleSearchChange}
                 className="border-2 border-gray-300  px-10 py-4   placeholder:text-bold   placeholder:text-primary placeholder-primary  font-body shadow-lg  text-primary   rounded-tl-3xl rounded-b-3xl   border-none    h-24 w-full focus:ring-2 focus:outline-none focus:ring-opacity-75"
             />
-            <button type="submit" class="  bg-primary w-16   p-4 h-14 relative  -left-20 rounded-tl-3xl rounded-b-3xl hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
+            <button onClick={PerformSearch} type="submit" className="  bg-primary w-16   p-4 h-14 relative  -left-20 rounded-tl-3xl rounded-b-3xl hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
            <FiSearch />     {/*{absolute left-1/4  mt-7 top-3/4 w-1/2} */}
             </button>
       </div>

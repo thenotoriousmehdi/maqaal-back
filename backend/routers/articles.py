@@ -13,6 +13,7 @@ from typing import List, Optional
 import os
 import secrets
 import subprocess
+import json
 
 from routers.esSearch import perform_search
 from routers.elasticSearchLogic import ElasticSearch_indexation
@@ -20,11 +21,42 @@ from routers.elasticSearchLogic import ElasticSearch_indexation
 
 router = APIRouter(prefix="/article", tags=["articles"])
 session=Session(bind=engine)
+
  
 @router.get("/")
 async def main():
-    
     return {"message":"hi from articles"}
+
+@router.post('/doExist')
+async def doExist(data: dict):
+    received_data = data.get("data")
+    print("Received data:", received_data)
+
+    try:
+        with open(f"./routers/doExist.json", 'r') as file:
+            doExist_json = json.load(file)
+
+        flag = doExist_json.get(received_data, False)
+    except FileNotFoundError:
+        flag = False
+        print("File does not exist")
+
+    print(flag)
+
+    if not flag:
+        newData = {received_data: True}
+        doExist_json.update(newData)
+
+        try:
+            with open(f"./routers/doExist.json", 'w') as file:
+                json.dump(doExist_json, file, indent=2)
+            return {"info": False}
+        except Exception as e:
+            print(f"Error updating file: {e}")
+            return {"info": "err"}
+    else:
+        return {"info": True}
+
 
 @router.post('/upload')
 async def upload(file:UploadFile=File(...)):  #create File instance 
@@ -40,36 +72,24 @@ async def upload(file:UploadFile=File(...)):  #create File instance
  
     return {"success":True, "file_path":file_path}
 
+
 @router.get('/index')
 async def EsIndexing():
     try:
-        
         await ElasticSearch_indexation();
 
         return {"message":"indexing went well "}
     except Exception as e: 
         print("indexing failed")
         print(e)
+
         return {"message":"indexing went wrong "}
-        
-@router.get('/Perform_search')
-async def serachInEs():
-
-    serach_result=perform_search()
-    """ print(serach_result) """
-
-    return {"message":serach_result}
-     
- 
- 
 
  
-
-
-
-
-
-
-
-    
+@router.post('/Perform_search')
+async def searchInEs(data:dict):
+    print(data.get("data"))
+    serach_result=perform_search(data.get("data")) 
+    print(serach_result)
+    return {"data":serach_result }
 
