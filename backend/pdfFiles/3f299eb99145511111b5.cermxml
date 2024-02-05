@@ -1,0 +1,2208 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.0 20120330//EN" "JATS-archivearticle1.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Cours 8 - Tests MODULE INTRODUCTION AU GÉNIE LOGICIEL</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>MOSTEFAI MOHAMMED AMINE - BATATA SOFIANE</string-name>
+        </contrib>
+      </contrib-group>
+      <pub-date>
+        <year>2015</year>
+      </pub-date>
+      <fpage>2015</fpage>
+      <lpage>2016</lpage>
+    </article-meta>
+  </front>
+  <body>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_1_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_4.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_5.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_6.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_7.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_8.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_9.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_10.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_2_11.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_3_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_3_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_3_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_3_4.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_3_5.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_3_6.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_3_7.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_4_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_4_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_4_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_5_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_5_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_5_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_6_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_6_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_6_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_7_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_7_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_7_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_8_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_8_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_8_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_4.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_5.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_6.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_7.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_8.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_9_9.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_10_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_10_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_10_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_11_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_11_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_11_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_12_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_12_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_12_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_13_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_13_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_13_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_14_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_14_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_14_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_15_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_15_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_15_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_16_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_16_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_16_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_17_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_17_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_17_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_18_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_18_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_18_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_19_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_19_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_19_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_20_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_20_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_20_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_20_4.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_20_5.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_20_6.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_20_7.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_21_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_21_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_21_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_22_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_22_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_22_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_23_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_23_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_23_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_24_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_24_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_24_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_25_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_25_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_25_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_26_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_26_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_26_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_27_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_27_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_27_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_28_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_28_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_28_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_29_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_29_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_29_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_30_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_30_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_30_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_31_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_31_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_31_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_32_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_32_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_32_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_33_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_33_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_33_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_34_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_34_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_34_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_35_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_35_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_35_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_36_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_36_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_36_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_37_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_37_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_37_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_38_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_38_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_38_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_39_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_39_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_39_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_40_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_40_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_40_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_41_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_41_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_41_3.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_42_1.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_42_2.png" />
+    </fig>
+    <fig>
+      <graphic xlink:href="pdfFiles\3f299eb99145511111b5.images\img_42_3.png" />
+    </fig>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Objectifs du Cours</p>
+      <p>Présenter
+l’activité de</p>
+      <p>tests
+IGL–Cours8,Tests</p>
+      <p>Donner les</p>
+      <p>différents
+types de tests
+Introduire les</p>
+      <p>tests
+unitaires</p>
+      <p>Introduire les
+tests en boîte
+noire
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>IGL – Cours 8, Tests
+Plan du Cours</p>
+      <p>Section 1 :
+Introduction</p>
+      <p>Section 2 :
+Le Processus
+de Tests</p>
+      <p>Section 3 :</p>
+      <p>Tests en
+boîte noire</p>
+      <p>Section 4 :</p>
+      <p>Tests
+unitaires
+I
+S
+h
+g
+i
+r
+y
+p
+o
+C
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Introduction</p>
+      <p>SECTION 1
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+n
+a
+i
+f
+o
+S
+n
+i
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Cycle de Vie</p>
+      <p>Expression des
+besoins</p>
+      <p>Analyse</p>
+      <p>Conception
+Implémentation</p>
+      <p>Tests
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M
+• Les tests sont le procédé de validation et de vérification d’un logiciel
+• Les tests assurent que le produit est conforme à ses spécifications
+• Les tests assurent que le produit fait ce qu’on attend de lui
+• Les tests identifient les bugs, les erreurs ou les défaillances les plus
+importantes dans le but de les réparer
+• Une défaillance importante est celle qui affecte l’utilisabilité du
+produit
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Qualité de logiciels</p>
+      <p>Qualité
+fonctionnelle</p>
+      <p>Qualité
+structurelle</p>
+      <p>Qualité du
+logiciel
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M
+• La qualité fonctionnelle assure que le produit est conforme à ses
+spécifications fonctionnelle.
+• La qualité structurelle concerne la conformité aux spécifications non
+fonctionnelles (par exemple robustesse, rapidité, performance) et
+aussi à l’analyse de la structure interne du produit (code source,
+architecture,…)
+• L’objectif des tests n’est pas d’améliorer la qualité mais plutôt de la
+mesurer
+E
+©
+t</p>
+      <p>Vérification</p>
+      <p>Validation
+Recensement</p>
+      <p>des
+défaillances
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M
+• La vérification consiste à vérifier une spécification par rapport aux
+attentes techniques. Par exemple, après la validation d’une facture,
+retrouver le champ « valide » à « true » dans la base de données
+• La validation consiste à vérifier une spécification par rapport aux
+attentes métier. Par exemple, après la validation d’une facture, la
+quantité du produit vendu doit décroître
+• Une défaillance est une variation entre les résultats actuels et les
+résultats attendus. L’origine de la défaillance peut être dans
+l’expression de besoins, la conception, l’analyse ou l’implémentation.
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Objectifs des tests - réponses</p>
+      <p>Est-ce que ça
+marche comme
+prévu ?</p>
+      <p>Est-ce que c’est</p>
+      <p>conforme aux
+spécifications ?</p>
+      <p>Est-ce que ça
+correspond aux
+attentes du client ?</p>
+      <p>Est-ce que le client
+apprécie ?
+Est-ce que c’est
+compatible avec
+les autres systèmes
+?</p>
+      <p>Est-ce que ça
+s’adapte à un
+nombre important
+d’utilisateurs ?</p>
+      <p>Quels sont les
+points à améliorer
+?</p>
+      <p>Est-ce que c’est</p>
+      <p>prêt pour le
+déploiement ?
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Objectifs des tests - Suite
+Economiser le temps et
+l’argent en identifiant
+rapidement les
+défaillances</p>
+      <p>Rendre le
+développement plus
+efficace</p>
+      <p>Augmenter la
+satisfaction du client</p>
+      <p>Correspondre le
+résultats aux attentes</p>
+      <p>Identifier les
+modifications à inclure
+dans les prochaines
+versions</p>
+      <p>Identifier les
+composants et les
+modules réutilisables</p>
+      <p>Identifier les lacunes
+des développeurs
+E
+C
+|
+e</p>
+      <p>Principes de tests
+Commencer par les cas généraux avant les cas particuliers
+Commencer par les cas prioritaires
+forcément le code</p>
+      <p>Portée des tests
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+itrgh Conformité aux
+yopC spécifications
+|en fonctionnelles
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+ie–n Les restriction et
+dAm recommandations
+em des administrateurs
+m
+aoh du système
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Conformité aux
+spécifications
+techniques</p>
+      <p>Culture et
+standards de
+l’entreprise</p>
+      <p>Exigences
+juridiques
+La configuration
+matérielle</p>
+      <p>Le code source</p>
+      <p>Propriétés
+culturelles et
+linguistiques
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|</p>
+      <p>Introduction</p>
+      <p>SECTION 1 – DÉBAT (10 MNS)
+E
+©
+t
+n
+a
+i
+f
+o
+S
+B
+–
+e
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Processus de Tests</p>
+      <p>SECTION 2
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>L’équipe de testeurs
+• Les tests ne sont pas le travail d’un seul homme mais celui d’une
+équipe
+• La taille de cette équipe dépend de la taille et de la complexité du
+projet
+• Les développeurs doivent avoir un rôle dans les tests mais d’une façon
+réduite
+• Le testeur doit être minutieux, critique (pas au sens jugement), curieux
+doté d’une bonne communication
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>L’équipe de testeurs – Questions à Poser</p>
+      <p>Comment
+pouvez-vous dire
+que ça marche ?</p>
+      <p>Que veut dire
+pour vous « ça
+marche » ?</p>
+      <p>Pourquoi ça
+marchait et que ça</p>
+      <p>ne marche plus ?</p>
+      <p>Qu’est-ce qui a
+causé le mauvais
+fonctionnement ?
+IGL|Cours8,Tests|Section 2,Processus deTest
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M
+• Le coordinateur de tests crée les plans de tests et les spécifications de
+tests sur la base des spécifications techniques et fonctionnelles
+• Les testeurs exécutent les tests et documentent les résultats
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Catégories de tests</p>
+      <p>Tests en boîte noire
+• s’exécutent en ignorant les
+mécanismes internes du
+produit
+• le testeur n’accède pas au
+code source</p>
+      <p>Tests en boîte blanche
+• Prennent les mécanismes</p>
+      <p>internes en considération
+• le testeur accède au code
+source
+E
+B
+–
+e
+• Il vaut mieux que les testeurs soient des personnes différentes des
+programmeurs
+• Les testeurs s’intéressent à une fonction en terme d’entrée et de sorties
+Entrée</p>
+      <p>Test</p>
+      <p>Sortie
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Le plan de tests
+• La planification des tests doit se faire dans les premières phases du
+projet
+• Le plan de tests est un document obligatoire déterminant le
+déroulement des tests durant le projet
+• Le tableau suivant indique le contenu d’un plan de test selon le
+standard « American National Standards Institute and Institute for
+Electrical and Electronic Engineers Standard 829/1983 for Software
+Test Documentation”
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Le plan de tests - Composition
+Élément
+Responsabilités
+Tests
+Communication
+Acteurs et affectation
+Portée de tests, plannings,
+durées et priorités</p>
+      <p>Plan de communication
+Analyse de risques</p>
+      <p>Éléments critiques à tester
+Traçage des
+défaillance</p>
+      <p>Documentation des
+défaillances
+Décrit qui fait quoi dans les tests. Assure le
+suivi et les affectations
+Définit le processus et détaille les actions à
+entreprendre
+Tout le monde doit savoir ce qu’il doit
+savoir avant les tests et ce qu’il doit faire
+savoir après les tests
+Identification des domaines qui sont
+critiques dans le projet
+Documenter les défaillances et les détails
+les concernant
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Priorisation des défaillances
+• Le plan de tests détermine la priorisation des défaillances
+• La priorisation facilite la communication entre développeurs et
+testeurs ainsi que l’affectation et la planification des tâches
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M
+6- Cosmétique
+Impossible de continuer les tests à cause de la sévérité des défaillances
+Les tests peuvent continuer mais l’application ne peut passer en mode production
+L’application peut passer en mode production mais des exigences fonctionnelles
+importantes ne sont pas satisfaites
+L’application peut passer en mode production mais des exigences fonctionnelles
+sans très grand impact ne sont pas satisfaites
+Défaillances mineures relatives à l’interface (couleurs, police, …) mais n’ayant pas
+une relation avec les exigences du client</p>
+      <p>Cas de test (Test Case)
+• Un cas de test est un ensemble d’entrées de tests, de conditions
+d’exécution et de résultats attendus pour un objectif particulier tel
+que la conformité du programme avec une spécification données
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+C
+n
+a
+i
+f
+o
+S
+M</p>
+      <p>Priorité
+Préconditions
+Résultats attendus</p>
+      <p>Résultats actuels</p>
+      <p>Remarques
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M
+• L’ID est un numéro unique qui permet la traçabilité des cas de test, les lier à des
+spécifications ou à d’autres cas de test
+• Les préconditions déterminent les conditions nécessaires à un cas de test. Elles
+indiquent aussi les cas de test qui doivent être exécutés précédemment
+• La description est un texte décrivant le tests et ses attentes
+• Le scénario détermine les étapes détaillées à suivre par le testeur
+• Les résultats attendus sont attendus de l’exécution du scénario
+• Les résultats actuels sont les vrais résultats obtenus, s’ils sont différents des
+résultats attendus, une défaillance est signalée
+• Les remarques sont signalées par le testeur pour ajouter des information concernant
+une exécution donnée
+• Le scénario est composé de plusieurs actions numérotées
+• Chaque action peut avoir un résultat attendu
+• L’exécution de test affecte un résultat actuel à chaque étape attendant
+un résultat
+• Si chaque résultat actuel est conforme au résultat attendu alors le test
+réussit sinon le test échoue
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Exemple 1</p>
+      <p>ID
+Résultats attendus
+Résultats Actuels
+1
+123Ouverture d’un document
+Existence d’un document
+1- Cliquez sur le bouton « Ouvrir »
+2- Sélectionnez le fichier désiré
+3- Appuyez sur OK
+1- Une boîte d’ouverture de fichiers
+s’affiche
+23- Le Document est ouvert et prêt à être
+manipulé
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Exemple 2</p>
+      <p>ID
+Résultats attendus
+Résultats actuels
+2
+12Impression d’un document
+1- Cliquez sur le bouton imprimer
+2- Sélection la config puis cliquer sur
+« Imprimer »
+1- La boîte de configuration
+d’imprimante s’affiche
+2- Le document sort sous format papier
+• Une campagne de tests sélectionne un certain nombre de cas de tests
+sémantiquement relatifs et les exécute
+• Chaque campagne de tests a un objectif tracé : validation du produit,
+performance, … etc.</p>
+      <p>Exercice
+• Ecrire un cas de test d’inscription à un mail en tenant en compte des
+cas particuliers suivants : adresse mail non valide, mail existant, mot de
+passe non sécurisé
+I
+S
+E
+C
+n
+a
+i
+f
+o
+S
+B
+m
+a
+M
+i
+a
+f
+e
+t
+s
+o</p>
+      <p>Tests en Boîte Noire</p>
+      <p>SECTION 3, DÉBAT 05 MNS
+E
+h
+g
+i
+r
+y
+p
+o
+C
+n
+a
+i
+f
+o
+S
+B
+m
+a
+M
+i
+a
+f
+e
+t
+s
+o</p>
+      <p>SECTION 4
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+©
+t
+h
+g
+i
+r
+y
+p
+o
+C
+|
+e
+n
+a
+i
+f
+o
+S
+a
+t
+a
+t
+a
+B
+–
+e
+n
+i
+m
+A
+d
+e
+m
+m
+a
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M
+• Les tests unitaires sont des tests en boîte blanche
+• Les tests unitaires sont composé d’un ensemble de classes appelées
+« classes de test »
+• Ces classes valident que des portions de code répondent à un certain
+besoin
+• Les tests unitaires sont importants car ils permettent de détecter le
+maximum de défaillance avant les tests en boîte noire et qu’ils
+peuvent s’exécuter d’une manière automatique</p>
+      <p>Objectifs
+• Les tests unitaires ont deux objectifs : « couverture de code » et
+« couverture de données »
+• La couverture du code stipule de tester chaque ligne de code écrite
+(appel de fonction, boucles, décisions, décisions multiples,…)
+6
+1
+0
+2
+5
+1
+0
+2
+I
+S
+E
+h
+g
+i
+r
+y
+p
+o
+C
+a
+t
+a
+t
+a
+B
+n
+i
+A
+d
+e
+M
+i
+a
+f
+e
+t
+s
+o
+M</p>
+      <p>Caractéristiques
+• Les tests unitaires doivent être conforme à l’acronyme FIRST:
+• FAST : un test unitaire doit s’exécuter rapidement
+• INDEPENDANT: chaque test doit être indépendant des autres
+• REPEATABLE: chaque test peut être répété autant de fois que voulu
+• TIMELY: On écrit les tests quand on en a besoin
+public class Calculator
+{
+{
+public int add(int x, int y)
+return x + y;
+public int multi(int x, int y)</p>
+      <p>return x*y;
+h
+g
+i
+r
+y
+p
+o
+C
+a
+t
+a
+t
+a
+B
+n
+i
+d
+e
+h
+o
+M
+i
+a
+f
+e
+t
+s
+o
+M
+// tester la classe
+public class CalculatorTest
+{
+// tester l’addition
+public int addTest()
+{
+C
+|</p>
+      <p>SECTION 4, DÉBAT 05 MNS
+• UML Component Diagrams, Veronica Carrega, 2004
+• Analyse, Conception Objet
+• Diagrammes de déploiement, SIMMO/ENSM.SE, 2002
+IGL – Cours 6, Architecture de Logiciels</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list />
+  </back>
+</article>

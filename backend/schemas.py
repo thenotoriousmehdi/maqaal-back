@@ -39,6 +39,12 @@ class TokenData(BaseModel):
     id: Optional[str] = None
 
 
+class UserUpdate(BaseModel):
+    email: Optional[EmailStr]
+    username: Optional[str]
+    password: Optional[str]
+
+
 # Response model hbb
 
 """
