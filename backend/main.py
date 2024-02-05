@@ -3,15 +3,14 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import Session,engine
-from schemas import SignUpModel
-from models import User
 
-from routers import users,articles
+from routers import articles,auth
 
 from fastapi.exceptions import HTTPException
 from werkzeug.security import generate_password_hash , check_password_hash
 from fastapi.encoders import jsonable_encoder
 
+import models
 
 import os
 import secrets
@@ -19,18 +18,22 @@ import subprocess
 import pandas_read_xml as pdx
 import xmltodict, json
 import xml.etree.ElementTree as ET
+import uuid
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["X-Custom-Header"],
 )
 
-app.include_router(users.router)
+app.include_router(auth.router)
 app.include_router(articles.router)
 
 async def run_cermine_extraction():
@@ -61,12 +64,7 @@ async def extract(fileName:str):
 
     fileNameExtbar = fileName.split(".")[0]
     print(fileNameExtbar)
-    
-    """ with open(f"./pdfFiles/{fileNameExtbar}.cermxml", 'r', encoding='utf-8') as file:
-        xml_content = file.read()
-
-    print(xml_content) """
-    
+ 
 #extract data from xml , format it as json , then index it                              
 
     # Parse the XML file
@@ -127,35 +125,30 @@ async def extract(fileName:str):
 
         sections.append(section)
 
+    refs = []
+    for item in root.findall(".//ref"):
+        ref_id = item.get('id')
+        mcitation = item.find(".//mixed-citation")
+
+        article_title = mcitation.find('.//article-title').text if mcitation.find('.//article-title') is not None else None
+        source = mcitation.find('.//source').text if mcitation.find('.//source') is not None else None
+        volume = mcitation.find('.//volume').text if mcitation.find('.//volume') is not None else None
+        fpage = mcitation.find('.//fpage').text if mcitation.find('.//fpage') is not None else None
+        lpage = mcitation.find('.//lpage').text if mcitation.find('.//lpage') is not None else None
+        issue = mcitation.find('.//issue').text if mcitation.find('.//issue') is not None else None
+
+        yearString = mcitation.find(".//year").text if mcitation.find(".//year") is not None else None 
+        gName = " ".join([name.text for name in mcitation.findall(".//given-names")]) if mcitation.findall(".//given-names") else None
+        sname = " ".join([name.text for name in mcitation.findall(".//surname")]) if mcitation.findall(".//surname") else None
+
+        result_string = f"Ref ID: {ref_id}, Given Names: {gName}, Surname: {sname}, Year: {yearString}, " \
+                        f"Article Title: {article_title}, Source: {source}, Volume: {volume}, " \
+                        f"Issue: {issue}, First Page: {fpage}, Last Page: {lpage}"
+
+        refs.append(result_string)
 
 
-    # Extracting fields and creating a one-line string
-    """  ref_id = root.get('id')
-    given_names = root.find('.//given-names').text
-    surname = root.find('.//surname').text
-    year = root.find('.//year').text
-    article_title = root.find('.//article-title').text
-    source = root.find('.//source').text
-    volume = root.find('.//volume').text
-    issue = root.find('.//issue').text
-    fpage = root.find('.//fpage').text
-    lpage = root.find('.//lpage').text
-
-    # Concatenate the extracted fields into a single line string
-    result_string = f"Ref ID: {ref_id}, Given Names: {given_names}, Surname: {surname}, Year: {year}, " \
-                    f"Article Title: {article_title}, Source: {source}, Volume: {volume}, " \
-                    f"Issue: {issue}, First Page: {fpage}, Last Page: {lpage}" """
-
-
-    """ result_dict = {
-        "DocumentTitle": DocumentTitle,
-        "Auteurs": auteurs,
-        "Institutions": institutions,
-        "Abstract": summary,
-        "Sections": sections,
-        "ResultString": result_string,
-    }
- """
+    
     # Specify the separator character
     separator = ', '
 
@@ -169,13 +162,16 @@ async def extract(fileName:str):
     for element in institutions:
         result_string_Inst += element + separator
     
+    doc_id = uuid.uuid4().hex
 
     result_dict = {
+        "Article_ID":doc_id,
         "DocumentTitle": DocumentTitle,
         "Auteurs": result_string_aut,
         "Institutions": result_string_Inst,
         "Abstract": summary,
-        "Sections": sections
+        "Sections": sections,
+        "references":refs
     }
 
     json_result = json.dumps(result_dict, indent=2)

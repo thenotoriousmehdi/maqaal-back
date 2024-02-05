@@ -20,6 +20,8 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 
  
 export const Admin = () => {
+
+  const [FileUploadState,SetFileUploadState] = useState('Choisisez un fichier a uploader')
   const [fileName, setFileName] = useState('');
    
 
@@ -74,9 +76,12 @@ export const Admin = () => {
   },
     };
 
-
+  
   if(upload){
-
+    SetFileUploadState("Un nouveau fichier uploadé")
+    setTimeout(()=>{
+      SetFileUploadState("Choisisez un fichier a uploader")
+    },2000)
     //Upload File
     const formData = new FormData();
     formData.append('file', fileInput.files[0]);
@@ -103,11 +108,12 @@ export const Admin = () => {
 
     //Index the files
     var response3 = await fetch("http://127.0.0.1:8000/article/index",options2)  
-
- 
-
-
-
+   }else{
+     
+    SetFileUploadState("Le fichier déja existant ")
+    setTimeout(()=>{
+      SetFileUploadState("Choisisez un fichier a uploader")
+    },2000)
    }  
   }
 
@@ -170,15 +176,19 @@ const [Mdperror , setMdperror] = useState(false)
     <>
       <h1 className=' text-3xl sm:text-4xl font-title my-6 font-extrabold mx-5 sm:mx-12 xl:mx-32 text-primary '>Bonjour , <span className=' text-rosee'>Admin</span> </h1>
       {/* FILE UPLOAD */}
-      <div className=' mx-5 my-12 sm:mx-12 xl:mx-32 text-white bg-primary rounded-xl   p-10 lg:p-32 text-center font-body text-2xl xl:text-4xl font-bold'>
-        file upload
+      <div className=' mx-5 my-12 sm:mx-12 xl:mx-32 text-white bg-primary rounded-xl   p-10 lg:p-32 text-center font-body text-xl xl:text-4xl font-bold'>
+          <div className="titeUpload text-6xl mb-10 ">file upload </div> 
+           
 
         <form className='p-4 flex flex-col ' method="POST" action="http://127.0.0.1:8000/article/upload" encType='multipart/form-data'>
           <input onChange={handleFileChange} className='m-auto     align-item ' type="file" name='fileUpload'  />
  
           <button className='text-rosee  round-3 hover:bg-sky-700 w-32 p-2 m-auto mt-5' onClick={SubmitEvent} type='submit'>submit</button>
         </form>
-
+        <div className="stateContainer border ">
+           <p className='   w-fit m-auto p-10  '>State : {FileUploadState}</p>
+        </div>
+        
 
       </div>
 

@@ -1,4 +1,4 @@
-import  { React ,  useState }  from 'react';
+import  { React ,  useState ,useEffect}  from 'react';
  import ArticleCard from './articleCard';
  import FadeIn from "./FadeIn";
  import Artclimg from '../assets/artclimg.png'
@@ -16,9 +16,43 @@ import './style.css'
 import 'swiper/swiper-bundle.css';
 
 // import required modules
+import { Navigation , FreeMode } from 'swiper/modules'; 
 
-import { Navigation , FreeMode } from 'swiper/modules';
+ 
+
 const artclsTendance = () => {
+
+  const getTrendingArticles =  ()=>{
+    const trendingArticles_res =fetch("http://localhost:8000/article/Perform_search", {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+     }, 
+    })
+    .then((res)=>{
+      return res.json()
+    })
+    .then((data)=>{
+      console.log(data);
+      return data
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+    
+  }
+
+  useEffect(()=>{
+
+    var trendingArticles =  getTrendingArticles()
+    console.log(trendingArticles);
+
+  },[])
+
+  
+   
+ 
+
 
 
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -26,8 +60,6 @@ const artclsTendance = () => {
   const toggleWishlist = () => {
      setIsWishlisted(!isWishlisted);
   };
-
-
 
 
   const articles = [

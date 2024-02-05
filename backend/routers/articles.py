@@ -3,7 +3,8 @@ from fastapi.responses import JSONResponse
 from database import Session,engine
 
 from models import Article
-""" from schemas import SignUpModel """
+from schemas import LunchParam
+ 
 """ from schemas import FileUploadSchema """
 
 from sqlalchemy.orm import Session
@@ -59,21 +60,6 @@ async def doExist(data: dict):
         return {"info": True}
 
 
-""" @router.post('/upload')
-async def upload(file:UploadFile=File(...)):  #create File instance 
-     
-    file_ext=file.filename.split(".").pop()    
-    file_name=secrets.token_hex(10)   #gives it unique name
-     
-    file_path=f"./pdfFiles/{file_name}.{file_ext}"
-    print(file_path)
-    with open(file_path,"wb") as f:
-        content = await file.read()
-        f.write(content)
- 
-    return {"success":True, "file_path":file_path} """
-
-
 @router.post('/upload')
 async def upload(file:UploadFile=File(...)):  #create File instance 
     print("hey")
@@ -89,7 +75,6 @@ async def upload(file:UploadFile=File(...)):  #create File instance
     return {"success":True, "file_path":file_path}
 
 
- 
 
 @router.get('/index')
 async def EsIndexing():
@@ -111,3 +96,17 @@ async def searchInEs(data:dict):
     print(serach_result)
     return {"data":serach_result }
 
+
+@router.get('/Perform_search')
+async def searchInEs():
+    print("getting articles")
+    serach_result=perform_search("all4") 
+
+    return {"data":serach_result}
+
+@router.post('/filter')
+async def filter(lunch_param: LunchParam):
+
+    print(lunch_param.Auteurs)    
+
+    return {"data":"message"}

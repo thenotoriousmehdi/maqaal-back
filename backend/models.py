@@ -1,34 +1,22 @@
 from database import Base
-from sqlalchemy import Column,Integer,Boolean,Text,String,ForeignKey,DateTime,ARRAY
+from sqlalchemy import Boolean,Column, ForeignKey,Integer,String,Text,ARRAY, DateTime
 from sqlalchemy.orm import relationship
-from sqlalchemy_utils.types import ChoiceType
-from sqlalchemy.sql import func
- 
-from datetime import datetime
+from sqlalchemy.sql.sqltypes import TIMESTAMP
+from sqlalchemy.sql.expression import text
 
-class User(Base):
-    USER_ROLE = (
-        ('REGULAR', 'regular'),
-        ('MODO', 'modo'),
-        ('ADMIN', 'admin'),
+
+class User(Base):  # extend base
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, nullable=False)
+    email = Column(String, nullable=False, unique=True)
+    password = Column(String, nullable=False)
+    username = Column(String, nullable=False)
+    role = Column(String, nullable=False)  # user - moderateur - admin
+    dateNaissance = Column(String)
+    gender = Column(String)
+    created_at = Column(
+        TIMESTAMP(timezone=True), nullable=False, server_default=text("now()")
     )
-
-    __tablename__ = 'users'
-
-    id = Column(Integer, primary_key=True)
-    fullname = Column(String(25))
-    gender = Column(Boolean,default=True)
-    date_of_birth = Column(DateTime)
-    email = Column(String(80), unique=True)
-    username = Column(String(25),unique=True)
-    password = Column(Text,nullable=True)   
-    role = Column(ChoiceType(choices=USER_ROLE), default="REGULAR")
-    created_at = Column(DateTime, default=func.now())
-
-    articles_tag = relationship("Article", back_populates="article")
-
-    def __repr__(self):
-        return f"<User {self.username}>"
 
 
 class Article(Base):
@@ -43,23 +31,35 @@ class Article(Base):
     full_text_content = Column(Text)
     pdf_url = Column(String(255))
     bibliography_reference = Column(String(500))
-    created_at = Column(DateTime, default=func.now())
+    created_at = Column(
+        TIMESTAMP(timezone=True), nullable=False, server_default=text("now()")
+    )
+    # user_id = Column(Integer, ForeignKey("users.id"))
+    # user = relationship("User", back_populates="articles_favoris")  # Updated relationship name
 
-    """ 
-    user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User", back_populates="articles_favoris")  # Updated relationship name
-    """
-
-    
     def __repr__(self):
         return f"<Article {self.id}>"
-      
-#table of set (article-tag)
-class Tag(Base):
-    __tablename__ = "tags"
 
-    id = Column(Integer, primary_key=True)
-    tagname=Column(String(255))
-    article_id=(Integer,ForeignKey("articles.id"))
 
-    article = relationship("Article", back_populates="articles_tag")
+# class Favoris(Base):
+#     __tablename__ = "favoris"
+#     user_id = Column(
+#         Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True
+#     )
+#     article_id = Column(
+#         Integer, ForeignKey("articles.id", ondelete="CASCADE"), primary_key=True
+#     )
+
+# class Post(Base):
+#     __tablename__ = "posts"
+#     id = Column(Integer, primary_key=True, nullable=False)
+#     title = Column(String, nullable=False)
+#     content = Column(String, nullable=False)
+#     published = Column(Boolean, server_default="TRUE", nullable=False)
+#     created_at = Column(
+#         TIMESTAMP(timezone=True), nullable=False, server_default=text("now()")
+#     )
+#     owner_id = Column(
+#         Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+#     )
+#     owner = relationship("User")

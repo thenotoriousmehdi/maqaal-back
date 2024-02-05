@@ -1,35 +1,74 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel, EmailStr
 
-class SignUpModel(BaseModel):
 
-    id:Optional[int]
-    fullname:str
-    username:str
-    gender:Optional[bool]
-    date_of_birth:Optional[datetime]
-    email:str
-    password:str
-    role:Optional[str]
-     
+class UserCreate(BaseModel):
+    email: EmailStr
+    password: str
+    username: str
+    role: str
+    dateNaissance:str
+    gender:str
+
+
+class UserOut(BaseModel):
+    id: int
+    email: EmailStr
+    username: str
+    role: str
+    dateNaissance:str
+    gender:str
+    created_at: datetime
 
     class Config:
-        orm_mode=True
-        schema_extra={
-            'example':{
-                "fullname":"newUser_fullname",
-                "username":"newUser",
-		        "email":"nexUser@gmail.com",
-		        "password":"passNEwUSER",
-            }
-        }
+        orm_mode = True
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    id: Optional[str] = None
+
+
+# Response model hbb
+
+"""
+class PostBase(BaseModel):
+    title: str
+    content: str
+    published: bool = True
+
+
+class PostCreate(PostBase):
+    pass
+
+
+
+class Post(PostBase):
+    id: int
+    created_at: datetime
+    owner_id: int
+    owner: UserOut
+
+    class Config:
+        orm_mode = True
+"""
 
         
-""" 
-class FileUploadSchema(BaseModel):
-    file_url:str
+class LunchParam(BaseModel):
+    keytwords: str
+    Auteurs: str
+    Institutions: str
+    PE2DP: str
 
-  """
    
  

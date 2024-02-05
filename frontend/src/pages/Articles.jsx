@@ -58,7 +58,34 @@ const Articles = () => {
     console.log(StringifyMotsCles(PE2DP)); 
     
     // Launch search based on the field 
-    
+    var lunchParam = {
+      "keytwords":motsCles,
+      "Auteurs":Auteurs,
+      "Institutions":Institutions,
+      "PE2DP":PE2DP
+    }
+
+    const result = fetch("http://localhost:8000/article/filter", {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(lunchParam),
+  })
+    .then((res)=>{
+      return res.json()
+    })
+    .then((data)=>{
+      console.log(data);
+      return data 
+    })
+    .catch((err)=>{
+      console.error('Error:', error);
+    })
+
+
+
+
 
  };
 

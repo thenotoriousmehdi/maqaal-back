@@ -3,7 +3,7 @@
 #***************
 import json
 
-map = {
+""" map = {
     "mappings": {
         "properties": {
             "institutions": {"type": "text"},
@@ -20,36 +20,29 @@ map = {
         }
     }
 }
-
-""" maps={
-  "mappings": {
-    "properties": {
-      "title": {
-        "type": "text"
-      },
-      "auteurs": {
-        "type": "text"
-      },
-      "institutions": {
-        "type": "text"
-      },
-      "abstract": {
-        "type": "text"
-      },
-      "sections": {
-        "type": "nested",
+ """
+map = {
+    "mappings": {
         "properties": {
-          "title": {
-            "type": "text"
-          },
-          "paragraphs": {
-            "type": "text"
-          }
+            "Article_ID": {"type": "text"},
+            "DocumentTitle": {"type": "text"},
+            "Auteurs": {"type": "text"},
+            "Institutions": {"type": "text"},
+            "Abstract": {"type": "text"},
+            "Sections": {
+                "type": "nested",
+                "properties": {
+                    "title": {"type": "text"},
+                    "paragraphs": {"type": "text"}
+                }
+            },
+            "references": {"type": "text"}
         }
-      }
     }
-  }
-} """
+}
+
+
+ 
 
 async def ElasticSearch_indexation():
 
