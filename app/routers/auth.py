@@ -83,13 +83,23 @@ def deleteModerateur(
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
-# @router.get("/{id}", response_model=schemas.UserOut)
-# def getUser(id: int, db: Session = Depends(database.get_db)):
-#     user = db.query(models.User).filter(models.User.id == id).first()
+@router.get("/moderateurs/{id}", response_model=schemas.UserOut)
+def getModById(id: int, db: Session = Depends(database.get_db)):
+    mod = db.query(models.User).filter(models.User.id == id).first()
+    return mod
 
-#     if not user:
-#         raise HTTPException(
-#             status_code=status.HTTP_404_NOT_FOUND,
-#             detail=f"User with id {id} does not exist",
-#         )
-#     return user
+
+@router.patch("/moderateurs/{id}", response_model=schemas.UserOut)
+def update_user(
+    id: int, user_update: schemas.UserUpdate, db: Session = Depends(database.get_db)
+):
+    user = db.query(models.User).filter(models.User.id == id).first()
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    for field, value in user_update.dict(exclude_unset=True).items():
+        setattr(user, field, value)
+
+    db.commit()
+    db.refresh(user)
+    return user
