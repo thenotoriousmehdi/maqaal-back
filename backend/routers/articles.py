@@ -27,7 +27,6 @@ session=Session(bind=engine)
 @router.get("/")
 async def main():
     return {"message":"hi from articles"}
-
 @router.post('/doExist')
 async def doExist(data: dict):
     received_data = data.get("data")
@@ -101,8 +100,16 @@ async def searchInEs(data:dict):
 async def searchInEs():
     print("getting articles")
     serach_result=perform_search("all4") 
-
     return {"data":serach_result}
+
+
+@router.get("/Perform_search/{id}")
+async def getArticleById(id: str):
+
+    serach_result=perform_search(f"id:{id}") 
+    
+    return serach_result
+
 
 @router.post('/filter')
 async def filter(lunch_param: LunchParam):
